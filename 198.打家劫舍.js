@@ -12,13 +12,13 @@
 var rob = function(nums) {
     const n = nums.length;
     const dp = new Array(n + 1);
-    dp[0] = 0;
-    dp[1] = nums[0];
-    for (let i = 2; i <= n; i++) {
+    dp[0] = nums[0];
+    dp[1] = Math.max(nums[0], nums[1]);
+    for (let i = 2; i < n; i++) {
         // 不偷  偷+ Math.max(dp[i-2]),
-        dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
+        dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
     }
-    return dp[n];
+    return dp[n - 1];
 };
 // @lc code=end
 
